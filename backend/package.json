@@ -23,9 +23,9 @@
     "validator": "10.7.1"
   },
   "devDependencies": {
-    "eslint": "^4.10.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "nodemon": "^1.12.1"
+    "eslint": "5.5.x",
+    "eslint-config-airbnb-base": "12.1.x",
+    "eslint-plugin-import": "2.14.x",
+    "nodemon": "1.18.x"
   }
 }
