@@ -1,0 +1,120 @@
+{
+  "users": [
+    {
+      "active": true,
+      "name": "John Company",
+      "email": "john@company.com",
+      "password": "1234",
+      "phone_number": "12345678",
+      "address": "Companygade 22",
+      "zip_code": "1100",
+      "city": "Copenhagen"
+    },
+    {
+      "active": true,
+      "name": "Job Poster",
+      "email": "john@poster.com",
+      "password": "1234",
+      "phone_number": "12345678",
+      "address": "Boatgade 20",
+      "zip_code": "1300",
+      "city": "Copenhagen"
+    }
+  ],
+  "companies": [
+    {
+      "name": "Best Company Name",
+      "lat": "55.674497302",
+      "lng": "12.587664316",
+      "cvr": "1234567890",
+      "is_paid": true,
+      "is_enabled": true,
+      "is_visible": true
+    }
+  ],
+  "jobs": [
+    {
+      "title": "Hard job",
+      "description": "It's a very hard job",
+      "lat": "55.674497302",
+      "lng": "12.587664316",
+      "price": 2000,
+      "due_date": "2018-11-10 08:12:34.055Z",
+      "posted": true
+    },
+    {
+      "title": "Engine repair",
+      "description": "It's a very hard job again",
+      "lat": "55.674497302",
+      "lng": "12.587664316",
+      "price": 3500,
+      "due_date": "2018-11-15 08:12:34.055Z",
+      "posted": true
+    },
+    {
+      "title": "Pizza delivery",
+      "description": "I am hungry",
+      "lat": "55.674497302",
+      "lng": "12.587664316",
+      "price": 20000,
+      "due_date": "2018-11-20 08:12:34.055Z",
+      "posted": true
+    }
+  ],
+  "boats": [
+    {
+      "name": "Beatiful boat",
+      "year": 2003,
+      "engine_serial_number": 1234567,
+      "description": "This is my beautiful boat",
+      "length": 20,
+      "address": "Boatgade 32",
+      "zip_code": "1400",
+      "city": "Copenhagen"
+    },
+    {
+      "name": "Ugly boat",
+      "year": 2003,
+      "engine_serial_number": 1234567,
+      "description": "This is my beautiful boat",
+      "length": 20,
+      "address": "Boatgade 32",
+      "zip_code": "1400",
+      "city": "Frederiksberg"
+    },
+    {
+      "name": "Terrible boat",
+      "year": 2003,
+      "engine_serial_number": 1234567,
+      "description": "This is my beautiful boat",
+      "length": 20,
+      "address": "Boatgade 32",
+      "zip_code": "1400",
+      "city": "Valby"
+    }
+  ],
+  "boat_subtypes": [
+    { "name": "Motor boat" },
+    { "name": "Sail boat" },
+    { "name": "Yacht" }
+  ],
+  "services": [
+    { "name": "Engine repair" },
+    { "name": "Sail repair" },
+    { "name": "Painting" }
+  ],
+  "proposals": [
+    {
+      "date": "2018-10-20 08:12:34.055Z",
+      "description": "We will be happy to fix it."
+    },
+    {
+      "date": "2018-10-20 08:12:34.055Z",
+      "description": "We will be happy to fix it."
+    },
+    {
+      "date": "2018-10-20 08:12:34.055Z",
+      "description": "We will be happy to fix it."
+    }
+  ]
+}
