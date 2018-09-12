@@ -1,25 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'app/variables.scss';
+
 body,
 button {
   font-family: 'Helvetica Neue', sans-serif;
 }
 
 .content {
-  padding-left: 300px;
+  background-color: #f8f8f8;
+  padding-left: $sideNavWidth;
 
   @media only screen and (max-width: 992px) {
     padding-left: 0;
   }
 }
 
+.page-container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-height: calc(100vh - 64px);
+}
+
 body.sidenav-hide {
   @media only screen and (min-width: 992px) {
     .sidenav {
-      transform: translate(-300px) !important;
+      transform: translate(-$sideNavWidth) !important;
     }
 
     .content {
       padding-left: 0;
     }
   }
+}
+
+.page-title {
+  font-size: 32px;
+  margin: 20px 0 30px 0;
+  color: #55595c;
 }

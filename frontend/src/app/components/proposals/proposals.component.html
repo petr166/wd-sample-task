@@ -1,30 +1,60 @@
 <div class="content">
-  <table>
-    <thead>
-      <tr>
-        <th>User Name</th>
-        <th>Boat Type</th>
-        <th>Service</th>
-        <th>Boat Location</th>
-        <th>Job Type</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+  <div class="page-container">
+    <h1 class="page-title">Proposals</h1>
 
-    <tbody>
-      <tr *ngFor="let proposal of parsedProposalList">
-        <td>{{proposal.username}}</td>
-        <td>{{proposal.boatType}}</td>
-        <td>{{proposal.service}}</td>
-        <td>{{proposal.location}}</td>
-        <td>{{proposal.is_emergency ? 'Emergency': 'Normal'}}</td>
-        <td>*msg</td>
-        <td>Cancel Proposal</td>
-        <td>*look</td>
-      </tr>
-    </tbody>
-  </table>
+    <ul class="filter-list">
+      <li><a href="" class="filter-dropdown-trigger">Boat Type <i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a href="" class="filter-dropdown-trigger">Sevice Type <i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a href="" class="filter-dropdown-trigger">Boat Location <i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a href="" class="filter-dropdown-trigger">Job Type <i class="material-icons right">arrow_drop_down</i></a></li>
+      <li class="apply"><a href="" class="btn">Apply</a></li>
+    </ul>
 
+    <div class="table-box">
+      <ul class="tabs">
+        <li class="tab active"><a href="#test1">Pending</a></li>
+        <li class="tab"><a class="active" href="#test2">Accepted</a></li>
+        <li class="tab"><a href="#test3">Completed</a></li>
+        <li class="tab"><a href="#test4">Declined</a></li>
+        <li class="tab"><a href="#test4">Cancelled</a></li>
+      </ul>
+
+      <div class="table-container">
+        <table class="centered responsive-table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Boat Type</th>
+              <th>Service</th>
+              <th>Boat Location</th>
+              <th>Job Type</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let proposal of parsedProposalList">
+              <td>{{proposal.username}}</td>
+              <td>{{proposal.boatType}}</td>
+              <td>{{proposal.service}}</td>
+              <td>{{proposal.location}}</td>
+              <td>
+                <div class="prop-type" [ngClass]="{'emergency': proposal.is_emergency}">
+                  {{proposal.is_emergency ? 'Emergency': 'Normal'}}
+                </div>
+              </td>
+              <td><i class="material-icons">mail_outline</i></td>
+              <td>
+                <button type="button" class="waves-effect waves-light btn-small cancel-prop-btn">
+                  Cancel Proposal</button>
+              </td>
+              <td><i class="material-icons">search</i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

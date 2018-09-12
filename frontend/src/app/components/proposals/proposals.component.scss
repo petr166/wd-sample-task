@@ -1,0 +1,121 @@
+@import '../../variables.scss';
+
+.filter-list {
+  display: flex;
+  align-items: center;
+  background-color: $primaryColor;
+  padding: 0;
+  height: 54px;
+  box-shadow: 0.5px 0.5px 5px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+
+  li {
+    padding: 15px 18px;
+
+    &:not(:first-child):not(:last-child) {
+      border-left: 1px solid #ccc;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+
+  li.apply {
+    padding: 0;
+    height: 100%;
+    margin-left: auto;
+
+    a {
+      height: 100%;
+      width: 86px;
+      line-height: 52px;
+      border-radius: 0;
+      box-shadow: none;
+      background-color: #f7c32a;
+      text-transform: none;
+    }
+  }
+}
+
+.table-box {
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.tabs {
+  display: flex;
+
+  li {
+    flex: 1;
+    background-color: #f4f2f2;
+
+    &:not(:first-child) {
+      border-left: 1px solid #e2e2e2;
+    }
+
+    &.active {
+      background-color: #f9f8f8;
+      border-bottom: 2px solid #91b2d0;
+    }
+
+    a {
+      text-transform: none;
+      color: #55595c;
+      font-size: 19px;
+    }
+  }
+}
+
+.table-container {
+  padding: 24px 12px 40px 12px;
+
+  table {
+    thead tr {
+      border-bottom: none;
+    }
+
+    th,
+    td {
+      color: #8b8e8f;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 16px 5px;
+    }
+
+    th {
+      padding-bottom: 18px;
+    }
+
+    td {
+      color: #55595c;
+
+      .cancel-prop-btn {
+        background-color: #a73036;
+        height: 22.4px;
+        line-height: 22.4px;
+        font-size: 9px;
+        text-transform: none;
+        padding: 0 6px;
+        box-shadow: none;
+      }
+
+      .prop-type {
+        background-color: #5cb85c;
+        color: #fff;
+        width: 72px;
+        font-size: 11px;
+        text-transform: none;
+        padding: 2px 8px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 2px;
+        margin: 0 auto;
+
+        &.emergency {
+          background-color: #a73036;
+        }
+      }
+    }
+  }
+}

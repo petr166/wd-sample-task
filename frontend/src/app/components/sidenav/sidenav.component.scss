@@ -5,6 +5,7 @@ $linkColor: #91b2d0;
 .sidenav {
   padding-top: 80px;
   background-color: $primaryColor;
+  width: $sideNavWidth;
 
   @media only screen and (min-width: 992px) {
     z-index: 996;
