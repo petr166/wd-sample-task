@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Boat Type</th>
+      <th>Service</th>
+      <th>Boat Location</th>
+      <th>Job Type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let proposal of parsedProposalList">
+      <td>{{proposal.username}}</td>
+      <td>{{proposal.boatType}}</td>
+      <td>{{proposal.service}}</td>
+      <td>{{proposal.location}}</td>
+      <td>{{proposal.is_emergency ? 'Emergency': 'Normal'}}</td>
+      <td>*msg</td>
+      <td>Cancel Proposal</td>
+      <td>*look</td>
+    </tr>
+  </tbody>
+</table>
