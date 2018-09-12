@@ -5,9 +5,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ProposalsComponent } from './components/proposals/proposals.component';
 
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoginGuardService } from './services/login-guard.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    canActivate: [LoginGuardService],
+    component: LoginComponent
+  },
   {
     path: '',
     canActivate: [AuthGuardService],
@@ -16,7 +21,7 @@ const routes: Routes = [
       { path: '**', redirectTo: '/proposals' }
     ]
   },
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

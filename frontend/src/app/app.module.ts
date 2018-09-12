@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoginGuardService } from './services/login-guard.service';
 import { LoginService } from './services/login.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
@@ -18,7 +19,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ProposalsComponent, NavbarComponent, SidenavComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ProposalsComponent,
+    NavbarComponent,
+    SidenavComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,6 +35,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   ],
   providers: [
     AuthGuardService,
+    LoginGuardService,
     AuthenticationService,
     LoginService,
     UserService,

@@ -46,7 +46,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let proposal of parsedProposalList">
+            <tr *ngFor="let proposal of parsedProposalList; let i = index;">
               <td>{{proposal.username}}</td>
               <td>{{proposal.boatType}}</td>
               <td>{{proposal.service}}</td>
@@ -58,8 +58,9 @@
               </td>
               <td><i class="material-icons">mail_outline</i></td>
               <td>
-                <button type="button" class="btn-small cancel-prop-btn">
-                  Cancel Proposal</button>
+                <button type="button" class="btn-small cancel-prop-btn" (click)="handleCancelClick(i)">
+                  Cancel Proposal
+                </button>
               </td>
               <td><i class="material-icons">search</i></td>
             </tr>
@@ -67,5 +68,16 @@
         </table>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="cancelProposalModal" class="modal">
+  <div class="modal-content">
+    <h4>Are you sure?</h4>
+    <p>Your proposal will be cancelled.</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close btn-flat">Cancel</a>
+    <a (click)="handleCancelAgreeClick()" class="modal-close btn-flat">Yes</a>
   </div>
 </div>

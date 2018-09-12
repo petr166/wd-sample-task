@@ -19,6 +19,7 @@ export class ProposalsComponent implements OnInit {
   parsedProposalList: Array<any> = [];
   error: string;
   status: string = 'pending';
+  modal: any;
 
   constructor(
     private proposalService: ProposalService,
@@ -27,6 +28,10 @@ export class ProposalsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.modal = M.Modal.init(document.querySelector('#cancelProposalModal'), {
+      endingTop: '20%'
+    });
+
     this.route.queryParams.subscribe(params => {
       const { status } = params;
       if (!statusOptions[status]) {
@@ -90,5 +95,9 @@ export class ProposalsComponent implements OnInit {
         location: boat_id.city
       };
     });
+  }
+
+  handleCancelClick(index: number) {
+    this.modal.open();
   }
 }
