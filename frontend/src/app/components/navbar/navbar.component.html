@@ -8,9 +8,9 @@
       <ul class="right">
         <li><a><i class="material-icons">notifications_none</i></a></li>
         <li><a><i class="material-icons">mail_outline</i></a></li>
-        <li><a class="dropdown-trigger" data-target="aDropdown">
+        <li><a (click)="handleProfileClick()" class="dropdown-trigger" data-target="aDropdown">
             <i class="material-icons left user-icon">account_circle</i>
-            <span class="hide-on-small-only">-Name-</span>
+            <span class="hide-on-small-only">{{getName()}}</span>
             <i class="material-icons right hide-on-med-and-down">arrow_drop_down</i>
           </a></li>
       </ul>

@@ -41,6 +41,17 @@
 .table-box {
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  min-height: 260px;
+
+  .loading-bar {
+    border-radius: 0;
+    margin: 0;
+    background-color: lighten($primaryColor, 50%);
+
+    .indeterminate {
+      background-color: $primaryColor;
+    }
+  }
 }
 
 .tabs {
@@ -63,6 +74,11 @@
       text-transform: none;
       color: #55595c;
       font-size: 19px;
+
+      &:active,
+      &:focus {
+        background-color: #f9f8f8;
+      }
     }
   }
 }
@@ -94,7 +110,7 @@
         background-color: #a73036;
         height: 22.4px;
         line-height: 22.4px;
-        font-size: 9px;
+        font-size: 8.5px;
         text-transform: none;
         padding: 0 6px;
         box-shadow: none;
@@ -118,4 +134,8 @@
       }
     }
   }
+}
+
+.empty-box {
+  padding-top: 40px;
 }

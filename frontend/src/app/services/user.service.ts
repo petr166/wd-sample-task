@@ -6,7 +6,7 @@ import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class UserService {
-  profile: any;
+  profile: any = {};
 
   constructor(
     private http: HttpClient,

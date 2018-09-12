@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { ProposalService } from '../../services/proposal.service';
+import {
+  ProposalService,
+  statusOptions
+} from '../../services/proposal.service';
+
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-proposals',
@@ -12,15 +18,40 @@ export class ProposalsComponent implements OnInit {
   proposalList: Array<any> = [];
   parsedProposalList: Array<any> = [];
   error: string;
+  status: string = 'pending';
 
-  constructor(private proposalService: ProposalService) {}
+  constructor(
+    private proposalService: ProposalService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.loadProposalList();
+    this.route.queryParams.subscribe(params => {
+      const { status } = params;
+      if (!statusOptions[status]) {
+        this.router.navigate([], {
+          replaceUrl: true,
+          queryParams: {
+            status: statusOptions.pending
+          }
+        });
+      } else {
+        this.status = status;
+        this.loadProposalList();
+      }
+    });
   }
 
   loadProposalList() {
-    this.proposalService.getProposalList().subscribe(
+    this.error = undefined;
+    this.isFetching = true;
+
+    const options = {
+      status: this.status
+    };
+
+    this.proposalService.getProposalList(options).subscribe(
       (res: any) => {
         const { success, error, proposalList } = res;
         this.isFetching = false;
@@ -29,10 +60,12 @@ export class ProposalsComponent implements OnInit {
           this.parsedProposalList = this.parseProposalList();
         } else {
           this.error = error;
+          this.parsedProposalList = [];
         }
       },
       err => {
         this.error = err.statusText || 'There was an error';
+        this.parsedProposalList = [];
         this.isFetching = false;
         console.log('====================================');
         console.log(err);

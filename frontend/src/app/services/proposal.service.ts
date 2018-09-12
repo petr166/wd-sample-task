@@ -5,6 +5,14 @@ import { environment } from '../../environments/environment';
 import { AuthenticationService } from './authentication.service';
 import { UserService } from './user.service';
 
+export const statusOptions = {
+  pending: 'pending',
+  accepted: 'accepted',
+  completed: 'completed',
+  declined: 'declined',
+  cancelled: 'cancelled'
+};
+
 @Injectable()
 export class ProposalService {
   constructor(
@@ -14,7 +22,7 @@ export class ProposalService {
   ) {}
 
   getProposalList(options: any = {}) {
-    const { status = 'pending' } = options;
+    const { status } = options;
     const { company } = this.userService.getMe();
 
     return this.http.get(environment.apiUrl + '/proposals', {
@@ -23,7 +31,7 @@ export class ProposalService {
       },
       params: {
         company_id: company._id,
-        status
+        status: status || statusOptions.pending
       }
     });
   }
