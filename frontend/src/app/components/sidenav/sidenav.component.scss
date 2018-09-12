@@ -1,0 +1,25 @@
+@import '../../variables.scss';
+
+$linkColor: #91b2d0;
+
+.sidenav {
+  padding-top: 80px;
+  background-color: $primaryColor;
+
+  @media only screen and (min-width: 992px) {
+    z-index: 996;
+  }
+
+  li a {
+    color: $linkColor;
+    font-size: 18px;
+  }
+
+  li.active {
+    background-color: $linkColor;
+
+    a {
+      color: $primaryColor;
+    }
+  }
+}

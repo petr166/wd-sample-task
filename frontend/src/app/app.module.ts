@@ -14,9 +14,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ProposalsComponent } from './components/proposals/proposals.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ProposalsComponent],
+  declarations: [AppComponent, LoginComponent, ProposalsComponent, NavbarComponent, SidenavComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

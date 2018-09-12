@@ -3,3 +3,23 @@ body,
 button {
   font-family: 'Helvetica Neue', sans-serif;
 }
+
+.content {
+  padding-left: 300px;
+
+  @media only screen and (max-width: 992px) {
+    padding-left: 0;
+  }
+}
+
+body.sidenav-hide {
+  @media only screen and (min-width: 992px) {
+    .sidenav {
+      transform: translate(-300px) !important;
+    }
+
+    .content {
+      padding-left: 0;
+    }
+  }
+}

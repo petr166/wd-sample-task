@@ -1,0 +1,36 @@
+@import '../../variables.scss';
+
+.brand-logo {
+  height: 100%;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-top: 4px;
+
+    img {
+      height: 30px;
+    }
+  }
+}
+
+.top-navbar {
+  background-color: #324e88;
+
+  ul.right li:not(:last-child) {
+    border-right: 1px solid #ccc;
+  }
+
+  ul.right li a {
+    padding: 0 16px;
+  }
+
+  i.user-icon {
+    margin-right: 6px;
+  }
+
+  .sidenav-trigger:hover {
+    cursor: pointer;
+  }
+}
