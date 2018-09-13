@@ -32,21 +32,23 @@ export class ProposalsComponent implements OnInit {
       endingTop: '20%'
     });
 
-    this.route.queryParams.subscribe(params => {
-      const { status } = params;
-      if (!statusOptions[status]) {
-        this.router.navigate([], {
-          replaceUrl: true,
-          queryParams: {
-            status: statusOptions.pending
-          }
-        });
-      } else {
-        this.status = status;
-        this.loadProposalList();
-      }
-    });
+    this.route.queryParams.subscribe(this.handleParamsChange);
   }
+
+  handleParamsChange = params => {
+    const { status } = params;
+    if (!statusOptions[status]) {
+      this.router.navigate([], {
+        replaceUrl: true,
+        queryParams: {
+          status: statusOptions.pending
+        }
+      });
+    } else {
+      this.status = status;
+      this.loadProposalList();
+    }
+  };
 
   loadProposalList() {
     this.error = undefined;
@@ -58,23 +60,14 @@ export class ProposalsComponent implements OnInit {
 
     this.proposalService.getProposalList(options).subscribe(
       (res: any) => {
-        const { success, error, proposalList } = res;
         this.isFetching = false;
-        if (success) {
-          this.proposalList = proposalList;
-          this.parsedProposalList = this.parseProposalList();
-        } else {
-          this.error = error;
-          this.parsedProposalList = [];
-        }
+        this.proposalList = res.proposalList;
+        this.parsedProposalList = this.parseProposalList();
       },
       err => {
-        this.error = err.statusText || 'There was an error';
+        this.error = err.message;
         this.parsedProposalList = [];
         this.isFetching = false;
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
       }
     );
   }

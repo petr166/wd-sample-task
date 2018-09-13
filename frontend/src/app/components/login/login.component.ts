@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // TODO: remove default values
     // init the form group
     this.loginForm = this.formBuilder.group({
       email: [
@@ -38,46 +37,24 @@ export class LoginComponent implements OnInit {
 
   handleSubmit() {
     this.isFetching = true;
+    this.error = undefined;
+
     this.loginService.login(this.loginForm.value).subscribe(
-      (res: any) => {
-        const { success, error, token } = res;
-        if (success) {
-          this.handleLoginSuccess(token);
-        } else {
-          this.error = error;
-          this.isFetching = false;
-        }
+      () => {
+        this.userService.loadMe().subscribe(
+          () => {
+            this.isFetching = false;
+            this.router.navigate(['/proposals']);
+          },
+          userErr => {
+            this.error = userErr.message;
+            this.isFetching = false;
+          }
+        );
       },
       err => {
-        this.error = err.statusText || 'There was an error.';
+        this.error = err.message;
         this.isFetching = false;
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
-      }
-    );
-  }
-
-  handleLoginSuccess(token: string) {
-    this.authService.setAuthToken(token);
-    this.userService.loadMe().subscribe(
-      (res: any) => {
-        const { success, error, user, company } = res;
-        this.isFetching = false;
-
-        if (success) {
-          this.userService.setMe({ user, company });
-          this.router.navigate(['/proposals']);
-        } else {
-          this.error = error;
-        }
-      },
-      err => {
-        this.error = err.statusText || 'There was an error.';
-        this.isFetching = false;
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
       }
     );
   }

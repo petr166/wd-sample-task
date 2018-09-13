@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginGuardService } from './services/login-guard.service';
+import { AuthHttpService } from './services/auth-http.service';
 import { LoginService } from './services/login.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
@@ -37,6 +38,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     AuthGuardService,
     LoginGuardService,
     AuthenticationService,
+    AuthHttpService,
     LoginService,
     UserService,
     ProposalService

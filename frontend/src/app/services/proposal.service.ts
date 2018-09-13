@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
-import { AuthenticationService } from './authentication.service';
 import { UserService } from './user.service';
+import { AuthHttpService } from './auth-http.service';
 
 export const statusOptions = {
   pending: 'pending',
@@ -16,8 +14,7 @@ export const statusOptions = {
 @Injectable()
 export class ProposalService {
   constructor(
-    private http: HttpClient,
-    private authenticationService: AuthenticationService,
+    private authHttp: AuthHttpService,
     private userService: UserService
   ) {}
 
@@ -25,10 +22,7 @@ export class ProposalService {
     const { status } = options;
     const { company } = this.userService.getMe();
 
-    return this.http.get(environment.apiUrl + '/proposals', {
-      headers: {
-        Authorization: this.authenticationService.getAuthToken()
-      },
+    return this.authHttp.authRequest('/proposals', {
       params: {
         company_id: company._id,
         status: status || statusOptions.pending

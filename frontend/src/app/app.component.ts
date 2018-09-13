@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -28,24 +30,23 @@ export class AppComponent implements OnInit {
     if (isLoggedIn) {
       this.isFetching = true;
       this.userService.loadMe().subscribe(
-        (res: any) => {
-          const { success, error, user, company } = res;
+        () => {
           this.isFetching = false;
-          if (success) {
-            this.userService.setMe({ user, company });
-          } else {
-            this.error = error;
-          }
         },
         err => {
-          this.error = err.statusText || 'There was an error';
           this.isFetching = false;
-          console.log('====================================');
-          console.log(err);
-          console.log('====================================');
+
+          if (err.status !== 401) {
+            // 401 will trigger navigation to /login, showing an error will prevent displaying it
+            this.error = err.message;
+          }
         }
       );
     }
+  }
+
+  isInDashboard() {
+    return this.router.url !== '/login'; // to add others like /home etc.
   }
 
   isReady(): boolean {

@@ -1,6 +1,6 @@
 <div *ngIf="isReady()">
-  <app-navbar *ngIf="!!authService.getAuthToken()"></app-navbar>
-  <app-sidenav *ngIf="!!authService.getAuthToken()"></app-sidenav>
+  <app-navbar *ngIf="isInDashboard()"></app-navbar>
+  <app-sidenav *ngIf="isInDashboard()"></app-sidenav>
   <router-outlet></router-outlet>
 </div>
 

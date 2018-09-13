@@ -20,10 +20,10 @@ export class AuthenticationService {
     const token = this.getAuthToken();
     localStorage.clear();
 
-    // this.http.delete(environment.apiUrl + '/user/logout', {
-    //   headers: {
-    //     Authorization: token
-    //   }
-    // });
+    this.http.delete(environment.apiUrl + '/user/logout', {
+      headers: {
+        Authorization: token
+      }
+    });
   }
 }
