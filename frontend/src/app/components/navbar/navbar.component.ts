@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  // returns user's first name
   getName() {
     const { user } = this.userService.getMe();
     if (user) return user.name.split(' ')[0];

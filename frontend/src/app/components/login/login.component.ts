@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LoginService } from '../../services/login.service';
-import { AuthenticationService } from '../../services/authentication.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private authService: AuthenticationService,
     private router: Router,
     private userService: UserService
   ) {}

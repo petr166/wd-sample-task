@@ -29,15 +29,19 @@ export class ProposalsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // init the cancel safety modal
     this.modal = M.Modal.init(document.querySelector('#cancelProposalModal'), {
       endingTop: '20%'
     });
 
+    // listen for query change, as it triggers table change
     this.route.queryParams.subscribe(this.handleParamsChange);
   }
 
   handleParamsChange = params => {
     const { status } = params;
+
+    // in case of bad value, go to default 'pending' tab
     if (!statusOptions[status]) {
       this.router.navigate([], {
         replaceUrl: true,
@@ -63,6 +67,8 @@ export class ProposalsComponent implements OnInit {
       (res: any) => {
         this.isFetching = false;
         this.proposalList = res.proposalList;
+
+        // hold a parsed version for easier display
         this.parsedProposalList = this.parseProposalList();
       },
       err => {
@@ -91,11 +97,13 @@ export class ProposalsComponent implements OnInit {
     });
   }
 
+  // on 'cancel proposal' click
   handleCancelClick(index: number) {
     this.modal.open();
     this.toCancelIndex = index;
   }
 
+  //on 'cancel proposal' consent :)
   handleCancelAgreeClick() {
     this.isFetching = true;
 

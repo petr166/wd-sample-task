@@ -10,6 +10,9 @@ export class AuthGuardService implements CanActivate {
     private router: Router
   ) {}
 
+  /**
+   * if not logged in, redirect to /login
+   */
   canActivate() {
     const isLoggedIn = !!this.authenticationService.getAuthToken();
 

@@ -23,6 +23,9 @@ export class AppComponent implements OnInit {
     this.loadData();
   }
 
+  /**
+   * load user data on app open if logged in
+   */
   loadData() {
     const isLoggedIn = !!this.authService.getAuthToken();
     this.error = undefined;
@@ -36,8 +39,8 @@ export class AppComponent implements OnInit {
         err => {
           this.isFetching = false;
 
+          // 401 will trigger navigation to /login, showing an error will prevent displaying it
           if (err.status !== 401) {
-            // 401 will trigger navigation to /login, showing an error will prevent displaying it
             this.error = err.message;
           }
         }

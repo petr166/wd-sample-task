@@ -15,6 +15,14 @@ export class AuthHttpService {
     private router: Router
   ) {}
 
+  /**
+   * HttpClient.request wrapper
+   * see https://angular.io/api/common/http/HttpClient#request
+   * adds Authorization header and handles errors
+   * @param {string} route - api route (without the base url)
+   * @param {Object} options - http request options
+   * @param {boolean} noAuth - set to true to exclude authentication
+   */
   authRequest(route: string, options: any = {}) {
     const { method = 'GET', headers = {} } = options;
     const url = environment.apiUrl + route;
@@ -28,6 +36,8 @@ export class AuthHttpService {
 
     return this.http.request(method, url, options).pipe(
       tap((res: any) => {
+        // the backend response is in { success: boolean, error?: string }
+        // when !success, throw error so it is handled in 1 place in components
         if (!res.success) {
           const err = new Error(res.error);
           err.message = res.error;

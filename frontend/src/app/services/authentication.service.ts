@@ -16,10 +16,15 @@ export class AuthenticationService {
     localStorage.setItem(environment.tokenKey, token);
   }
 
+  /**
+   * clear localStorage and send /logout request
+   */
   logout() {
     const token = this.getAuthToken();
     localStorage.clear();
 
+    // no handlers for this, because the logout action should happen,
+    // and the credentials removed wheter or not the backend responds
     this.http
       .delete(environment.apiUrl + '/user/logout', {
         headers: {

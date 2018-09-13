@@ -10,6 +10,9 @@ export class LoginGuardService implements CanActivate {
     private router: Router
   ) {}
 
+  /**
+   * if logged in, redirect to /proposals
+   */
   canActivate() {
     const isLoggedIn = !!this.authenticationService.getAuthToken();
 
