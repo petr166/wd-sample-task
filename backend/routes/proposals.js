@@ -39,18 +39,7 @@ router.delete('/', authenticate, authenticateCompany, (req, res, next) => {
     return next(new Error('Missing request fields'));
   }
 
-  Company.findById(company_id)
-    .then((company) => {
-      // check if the company belongs to requesting user
-      const belongsToUser = company.user_id.toString() === req.userId.toString();
-      if (!belongsToUser) {
-        const errorObj = new Error('Unauthorized');
-        errorObj.status = 401;
-        return Promise.reject(errorObj);
-      }
-
-      return Proposal.findById(id);
-    })
+  return Proposal.findById(id)
     .then((proposal) => {
       if (!proposal) {
         return Promise.reject(new Error('Proposal not found'));
