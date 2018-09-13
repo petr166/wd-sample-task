@@ -12,7 +12,7 @@
 - npm v6.4.1
 - mongoDb v3.4.9
 
-> there are the versions used in development, i guess it would work with others
+> these are the versions used in development, i guess it would work with others
 
 ## Run
 
@@ -40,7 +40,7 @@ npm start # runs the server on $PORT || 8080
 
 ```bash
 cd frontend && npm install
-npm start -o  # runs angular dev server,
+ng serve -o  # runs angular dev server,
 # opens browser on http://localhost:4200
 ```
 
