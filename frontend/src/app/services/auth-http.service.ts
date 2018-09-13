@@ -28,10 +28,15 @@ export class AuthHttpService {
     const url = environment.apiUrl + route;
 
     if (!options.noAuth) {
-      options.headers = {
-        ...headers,
-        Authorization: this.authenticationService.getAuthToken()
-      };
+      const token = this.authenticationService.getAuthToken();
+      // add the authorization header only if there is a token
+      // else HttpClient throws errors
+      if (token) {
+        options.headers = {
+          ...headers,
+          Authorization: token
+        };
+      }
     }
 
     return this.http.request(method, url, options).pipe(

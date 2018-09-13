@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { tap, retry } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { AuthHttpService } from './auth-http.service';
 
@@ -11,7 +11,6 @@ export class UserService {
 
   loadMe() {
     return this.authHttp.authRequest('/company/me').pipe(
-      retry(3),
       tap(res => {
         const { user, company } = res;
         this.setMe({ user, company });
