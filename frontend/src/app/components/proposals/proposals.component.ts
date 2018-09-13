@@ -104,7 +104,7 @@ export class ProposalsComponent implements OnInit {
       .subscribe(
         () => {
           this.loadProposalList();
-          M.toast({ html: 'Proposal cancelled' });
+          M.toast({ html: 'Proposal canceled' });
         },
         () => {
           this.isFetching = false;

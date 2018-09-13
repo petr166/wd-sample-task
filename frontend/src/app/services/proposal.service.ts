@@ -8,7 +8,7 @@ export const statusOptions = {
   accepted: 'accepted',
   completed: 'completed',
   declined: 'declined',
-  cancelled: 'cancelled'
+  canceled: 'canceled'
 };
 
 @Injectable()
@@ -31,9 +31,11 @@ export class ProposalService {
   }
 
   cancelProposal(id: string) {
+    const { company } = this.userService.getMe();
+
     return this.authHttp.authRequest('/proposals', {
       method: 'DELETE',
-      params: { id }
+      params: { id, company_id: company._id }
     });
   }
 }

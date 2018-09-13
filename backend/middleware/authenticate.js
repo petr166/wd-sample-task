@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
   return AccessToken.validateToken(token)
     .then((userId) => {
       // add the userId and token to the request obj for down the chain use convenience
-      req.userId = userId;
+      req.userId = userId.toString();
       req.token = token;
       next();
     })

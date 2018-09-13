@@ -16,7 +16,7 @@
         <li class="tab" [ngClass]="{'active': status === 'accepted'}"><a [routerLink]="['./']" [queryParams]="{status: 'accepted'}">Accepted</a></li>
         <li class="tab" [ngClass]="{'active': status === 'completed'}"><a [routerLink]="['./']" [queryParams]="{status: 'completed'}">Completed</a></li>
         <li class="tab" [ngClass]="{'active': status === 'declined'}"><a [routerLink]="['./']" [queryParams]="{status: 'declined'}">Declined</a></li>
-        <li class="tab" [ngClass]="{'active': status === 'cancelled'}"><a [routerLink]="['./']" [queryParams]="{status: 'cancelled'}">Cancelled</a></li>
+        <li class="tab" [ngClass]="{'active': status === 'canceled'}"><a [routerLink]="['./']" [queryParams]="{status: 'canceled'}">Canceled</a></li>
       </ul>
       <div *ngIf="isFetching" class="progress loading-bar">
         <div class="indeterminate"></div>
@@ -41,7 +41,7 @@
               <th>Boat Location</th>
               <th>Job Type</th>
               <th></th>
-              <th></th>
+              <th *ngIf="status !== 'canceled'"></th>
               <th></th>
             </tr>
           </thead>
@@ -57,7 +57,7 @@
                 </div>
               </td>
               <td><i class="material-icons">mail_outline</i></td>
-              <td>
+              <td *ngIf="status !== 'canceled'">
                 <button type="button" class="btn-small cancel-prop-btn" (click)="handleCancelClick(i)">
                   Cancel Proposal
                 </button>
@@ -74,7 +74,7 @@
 <div id="cancelProposalModal" class="modal">
   <div class="modal-content">
     <h4>Are you sure?</h4>
-    <p>Your proposal will be cancelled.</p>
+    <p>Your proposal will be canceled.</p>
   </div>
   <div class="modal-footer">
     <a class="modal-close btn-flat">No</a>

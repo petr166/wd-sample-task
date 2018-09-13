@@ -44,5 +44,14 @@ ProposalSchema.statics.findPopulated = function (query) {
     });
 };
 
+/**
+ * Cancel proposal
+ */
+ProposalSchema.methods.cancel = function () {
+  this.status = 'canceled';
+  this.updated_at = new Date();
+  return this.save();
+};
+
 const Proposal = mongoose.model('Proposal', ProposalSchema);
 module.exports = Proposal;
