@@ -29,4 +29,11 @@ export class ProposalService {
       }
     });
   }
+
+  cancelProposal(id: string) {
+    return this.authHttp.authRequest('/proposals', {
+      method: 'DELETE',
+      params: { id }
+    });
+  }
 }

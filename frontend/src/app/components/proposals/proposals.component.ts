@@ -20,6 +20,7 @@ export class ProposalsComponent implements OnInit {
   error: string;
   status: string = 'pending';
   modal: any;
+  toCancelIndex: number;
 
   constructor(
     private proposalService: ProposalService,
@@ -92,5 +93,23 @@ export class ProposalsComponent implements OnInit {
 
   handleCancelClick(index: number) {
     this.modal.open();
+    this.toCancelIndex = index;
+  }
+
+  handleCancelAgreeClick() {
+    this.isFetching = true;
+
+    this.proposalService
+      .cancelProposal(this.proposalList[this.toCancelIndex]._id)
+      .subscribe(
+        () => {
+          this.loadProposalList();
+          M.toast({ html: 'Proposal cancelled' });
+        },
+        () => {
+          this.isFetching = false;
+          M.toast({ html: 'Error: Proposal cancel failed' });
+        }
+      );
   }
 }
