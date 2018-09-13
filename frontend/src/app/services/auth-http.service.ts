@@ -51,12 +51,17 @@ export class AuthHttpService {
       }),
       catchError((resError: HttpErrorResponse) => {
         // go to /login on "Unauthorized" 401
-        if (resError.status === 401) {
-          this.authenticationService.logout();
-          this.router.navigate(['/login'], { replaceUrl: true });
+        if (resError.statusText) {
+          if (resError.status === 401) {
+            this.authenticationService.logout();
+            this.router.navigate(['/login'], { replaceUrl: true });
+            throw resError;
+          } else {
+            throw new Error('Network error');
+          }
+        } else {
+          throw resError;
         }
-
-        throw resError;
       })
     );
   }

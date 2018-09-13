@@ -18,7 +18,7 @@
         <li class="tab" [ngClass]="{'active': status === 'declined'}"><a [routerLink]="['./']" [queryParams]="{status: 'declined'}">Declined</a></li>
         <li class="tab" [ngClass]="{'active': status === 'canceled'}"><a [routerLink]="['./']" [queryParams]="{status: 'canceled'}">Canceled</a></li>
       </ul>
-      <div *ngIf="isFetching" class="progress loading-bar">
+      <div [ngClass]="{'hide': !isFetching}" class="progress loading-bar">
         <div class="indeterminate"></div>
       </div>
 
