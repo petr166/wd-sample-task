@@ -51,13 +51,6 @@ export class AuthHttpService {
           this.router.navigate(['/login'], { replaceUrl: true });
         }
 
-        if (resError.statusText) {
-          const err = new Error(resError.statusText);
-          err.message = resError.statusText;
-          err.status = resError.status;
-          throw err;
-        }
-
         throw resError;
       })
     );
